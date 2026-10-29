@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ex Design – Games</title>
+<meta name="description" content="Ex Design – independent mobile games. Bouncing Ball: Moonlit Run.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#10131f; --bg2:#181c2c; --card:#1b2033; --line:#2c3350; --text:#ece7dc; --muted:#a7abbd; --gold:#e6cf9c; --gold-deep:#c9a96a; --glow:rgba(255,206,128,.18); }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){ --bg:#f5f1ea; --bg2:#ece5d8; --card:#fffdf9; --line:#e2d8c6; --text:#2a2a2e; --muted:#6b6658; --gold:#8a6a2f; --gold-deep:#a5813f; --glow:rgba(201,169,106,.22); }
+  }
+  *{box-sizing:border-box}
+  body{ margin:0; min-height:100vh; color:var(--text);
+    background:radial-gradient(1200px 600px at 50% -200px, var(--bg2), var(--bg) 70%) fixed, var(--bg);
+    font:16px/1.7 "Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  .wrap{ max-width:720px; margin:0 auto; padding:56px 18px 64px; text-align:center }
+  .studio{ font-family:"Cinzel",Georgia,serif; font-weight:700; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); font-size:.85rem; margin:0 0 36px }
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:20px; padding:36px 22px 30px }
+  .moon{ width:96px; height:96px; margin:0 auto 22px; border-radius:50%;
+    background:radial-gradient(circle at 38% 35%, #fff6df, #f1d9a6 45%, #c9a96a 100%);
+    box-shadow:0 0 0 8px var(--glow), 0 0 64px 14px var(--glow); }
+  h1{ font-family:"Cinzel",Georgia,serif; font-size:clamp(1.6rem,6vw,2.3rem); line-height:1.2; margin:0 }
+  .tagline{ margin:10px 0 0; color:var(--gold); font-weight:700; letter-spacing:.32em; font-size:.72rem; text-transform:uppercase }
+  .desc{ color:var(--muted); max-width:480px; margin:20px auto 0 }
+  .soon{ display:inline-block; margin-top:22px; padding:8px 18px; border-radius:999px; border:1px solid var(--gold-deep); color:var(--gold); font-weight:700; font-size:.9rem }
+  .links{ margin-top:36px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
+  .links a{ text-decoration:none; color:var(--gold); font-weight:700; border:1px solid var(--line); border-radius:999px; padding:8px 18px; background:var(--card) }
+  .links a:hover{ border-color:var(--gold-deep) }
+  footer{ margin-top:40px; color:var(--muted); font-size:.85rem }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="studio">Ex Design</p>
+
+  <div class="card">
+    <div class="moon" aria-hidden="true"></div>
+    <h1>Bouncing Ball: Moonlit Run</h1>
+    <p class="tagline">A journey by moonlight</p>
+    <p class="desc">Guide a moonlit ball past marble pillars on a night journey around the world's landmarks — from Istanbul to Paris, Rome and beyond.</p>
+    <span class="soon">Coming soon to Google Play &amp; the App Store</span>
+  </div>
+
+  <nav class="links">
+    <a href="privacy/">Privacy Policy</a>
+    <a href="privacy/#tr">Gizlilik Politikası</a>
+    <a href="mailto:exdesign.games@gmail.com">Contact</a>
+  </nav>
+
+  <footer>© 2026 Ex Design · exdesign.games@gmail.com</footer>
+</div>
+</body>
+</html>
