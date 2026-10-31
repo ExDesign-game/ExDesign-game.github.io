@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy – Gravity: Field Theory</title>
+<meta name="description" content="Privacy policy for Gravity: Field Theory, a physics puzzle and generative art game by Ex Design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void: #0D0A14;
+    --plum: #1E1424;
+    --plum-2: #2A1C31;
+    --line: rgba(244, 236, 230, 0.12);
+    --text: #F4ECE6;
+    --muted: #B3A6B0;
+    --amber: #FFB38A;
+    --rose: #E86A9A;
+    --violet: #9D86FF;
+    --goal: #8FE3C0;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--void);
+    color: var(--text);
+    font: 16px/1.7 "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- Sky ---------- */
+  .sky {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(60vmax 40vmax at 85% -5%, rgba(232, 106, 154, 0.22), transparent 60%),
+      radial-gradient(55vmax 45vmax at -10% 30%, rgba(157, 134, 255, 0.16), transparent 60%),
+      radial-gradient(50vmax 40vmax at 70% 110%, rgba(255, 179, 138, 0.12), transparent 60%),
+      var(--void);
+  }
+  .sky::after {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.7), transparent),
+      radial-gradient(1px 1px at 78% 12%, rgba(255,255,255,.55), transparent),
+      radial-gradient(1.5px 1.5px at 42% 66%, rgba(255,217,196,.6), transparent),
+      radial-gradient(1px 1px at 88% 52%, rgba(255,255,255,.5), transparent),
+      radial-gradient(1px 1px at 22% 84%, rgba(255,255,255,.45), transparent),
+      radial-gradient(1.5px 1.5px at 62% 30%, rgba(201,192,255,.55), transparent),
+      radial-gradient(1px 1px at 6% 52%, rgba(255,255,255,.4), transparent),
+      radial-gradient(1px 1px at 94% 88%, rgba(255,255,255,.45), transparent);
+  }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- Hero ---------- */
+  header { padding: 56px 0 28px; text-align: center; }
+  .orbit { width: 132px; height: 132px; margin: 0 auto 18px; display: block; }
+  .orbit .trail { fill: none; stroke-width: 2.2; stroke-linecap: round; }
+  .orbit .t1 { stroke: url(#g1); }
+  .orbit .t2 { stroke: url(#g2); opacity: .55; }
+  .orbit .spark { animation: travel 9s linear infinite; offset-path: path("M66 66 C 96 26, 122 46, 104 72 C 90 92, 74 80, 66 66 C 58 52, 42 40, 28 60 C 10 86, 36 106, 66 66"); }
+  @keyframes travel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+  @media (prefers-reduced-motion: reduce) { .orbit .spark { animation: none; } }
+  h1.game {
+    font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-weight: 600;
+    font-size: clamp(40px, 9vw, 58px); line-height: 1.02; margin: 0; letter-spacing: .2px;
+    text-shadow: 0 2px 24px rgba(13, 10, 20, .9);
+  }
+  .by { margin-top: 10px; color: var(--muted); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
+  .by b { color: var(--amber); font-weight: 500; }
+
+  .lang {
+    display: inline-flex; gap: 4px; margin-top: 26px; padding: 4px;
+    border-radius: 999px; background: rgba(30, 20, 36, .85); border: 1px solid var(--line);
+  }
+  .lang button {
+    font: 500 14px "DM Sans", sans-serif; color: var(--muted); background: none; border: 0;
+    padding: 8px 18px; border-radius: 999px; cursor: pointer; transition: background .2s, color .2s;
+  }
+  .lang button.on { background: var(--amber); color: #2A1A26; }
+
+  /* ---------- Content ---------- */
+  [data-lang] { display: none; }
+  [data-lang].on { display: block; animation: fade .35s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  .title-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 28px 0 14px; }
+  h2.page {
+    font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-weight: 600;
+    font-size: 34px; margin: 0;
+  }
+  .date { color: var(--muted); font-size: 14px; }
+
+  .short {
+    border-radius: 24px; padding: 22px 22px 8px; margin-bottom: 8px;
+    background: linear-gradient(160deg, rgba(42, 28, 49, .95), rgba(30, 20, 36, .9));
+    border: 1px solid rgba(255, 179, 138, .28);
+    box-shadow: 0 20px 60px -30px rgba(255, 179, 138, .35);
+  }
+  .short h3 { margin: 0 0 12px; color: var(--amber); font-size: 15px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .short ul { list-style: none; padding: 0; margin: 0; }
+  .short li { position: relative; padding-left: 26px; margin-bottom: 12px; }
+  .short li::before {
+    content: ""; position: absolute; left: 4px; top: .62em; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--amber); box-shadow: 0 0 10px rgba(255, 179, 138, .8);
+  }
+
+  section.part { padding: 26px 0 4px; border-bottom: 1px solid var(--line); }
+  section.part:last-of-type { border-bottom: 0; }
+  h4 {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 20px; font-weight: 700; margin: 0 0 10px;
+  }
+  h4 .n {
+    flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+    font-size: 14px; font-weight: 700; color: var(--amber);
+    border: 1.5px solid rgba(255, 179, 138, .55); background: rgba(255, 179, 138, .08);
+  }
+  h5 { font-size: 16px; margin: 18px 0 6px; color: var(--text); }
+  p { margin: 0 0 14px; }
+  ul.list { margin: 0 0 14px; padding-left: 20px; }
+  ul.list li { margin-bottom: 8px; }
+  ul.list li::marker { color: var(--amber); }
+  a { color: var(--amber); text-decoration-color: rgba(255, 179, 138, .4); text-underline-offset: 3px; }
+  a:hover { text-decoration-color: var(--amber); }
+  strong { color: #fff; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 16px; }
+  .chip {
+    font-size: 13px; padding: 6px 12px; border-radius: 999px;
+    background: rgba(244, 236, 230, .06); border: 1px solid var(--line); color: var(--text);
+  }
+  .chip i { font-style: normal; margin-right: 6px; }
+
+  .table { border-radius: 18px; overflow: hidden; border: 1px solid var(--line); margin: 6px 0 16px; background: rgba(30, 20, 36, .7); }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th { text-align: left; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--amber); background: rgba(255, 179, 138, .07); }
+  th, td { padding: 12px 14px; vertical-align: top; }
+  tr + tr td { border-top: 1px solid var(--line); }
+  td:first-child { font-weight: 700; white-space: nowrap; }
+  @media (max-width: 560px) {
+    table, thead, tbody, tr, th, td { display: block; }
+    thead { display: none; }
+    tr { padding: 12px 14px; }
+    tr + tr { border-top: 1px solid var(--line); }
+    td { padding: 2px 0; border: 0 !important; white-space: normal !important; }
+    td:first-child { color: var(--amber); }
+  }
+
+  .note {
+    display: flex; gap: 12px; padding: 14px 16px; border-radius: 16px; margin: 4px 0 16px;
+    background: rgba(143, 227, 192, .07); border: 1px solid rgba(143, 227, 192, .25);
+  }
+  .note .dot { flex: none; width: 10px; height: 10px; margin-top: .55em; border-radius: 50%; background: var(--goal); box-shadow: 0 0 10px var(--goal); }
+
+  .contact {
+    margin: 30px 0 10px; padding: 22px; border-radius: 24px; text-align: center;
+    background: linear-gradient(160deg, rgba(42, 28, 49, .95), rgba(30, 20, 36, .9)); border: 1px solid var(--line);
+  }
+  .contact .mail {
+    display: inline-block; margin-top: 8px; padding: 12px 22px; border-radius: 999px;
+    background: var(--amber); color: #2A1A26; font-weight: 700; text-decoration: none;
+  }
+
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 26px 0 48px; }
+  footer .diamond { color: var(--amber); margin: 0 8px; }
+</style>
+</head>
+<body>
+<div class="sky"></div>
+
+<header class="wrap">
+  <svg class="orbit" viewBox="0 0 132 132" aria-hidden="true">
+    <defs>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#FFB38A"/><stop offset=".55" stop-color="#E86A9A"/><stop offset="1" stop-color="#9D86FF"/>
+      </linearGradient>
+      <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#9D86FF"/><stop offset="1" stop-color="#FFB38A"/>
+      </linearGradient>
+      <radialGradient id="sun"><stop offset="0" stop-color="#FFF4EC"/><stop offset=".35" stop-color="#FFB38A"/><stop offset="1" stop-color="#FFB38A" stop-opacity="0"/></radialGradient>
+    </defs>
+    <path class="trail t2" d="M66 66 C 100 30, 126 52, 106 76 C 92 94, 74 82, 66 66 C 58 50, 40 38, 26 58 C 8 84, 34 108, 66 66"/>
+    <path class="trail t1" d="M66 66 C 96 26, 122 46, 104 72 C 90 92, 74 80, 66 66 C 58 52, 42 40, 28 60 C 10 86, 36 106, 66 66"/>
+    <circle cx="100" cy="64" r="14" fill="url(#sun)"/>
+    <circle cx="34" cy="70" r="12" fill="url(#sun)" opacity=".8"/>
+    <circle class="spark" r="3" fill="#FFF4EC" style="filter: drop-shadow(0 0 4px #FFB38A)"/>
+  </svg>
+  <h1 class="game">Gravity:<br>Field Theory</h1>
+  <div class="by" lang="en">by <b>Ex Design</b></div>
+  <div class="lang" role="tablist">
+    <button id="b-en" onclick="setLang('en')" role="tab">English</button>
+    <button id="b-tr" onclick="setLang('tr')" role="tab">Türkçe</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ======================================================= ENGLISH -->
+<article data-lang="en" lang="en">
+  <div class="title-row">
+    <h2 class="page">Privacy Policy</h2>
+    <span class="date">Effective: November 1, 2026</span>
+  </div>
+
+  <div class="short">
+    <h3>In short</h3>
+    <ul>
+      <li>The game is free and shows ads through <strong>Google AdMob</strong>.</li>
+      <li>There are <strong>no accounts</strong>. We don't collect, keep on servers or sell your personal data.</li>
+      <li>Your progress, settings and artworks <strong>stay on your device</strong>.</li>
+      <li>Google, as our ad provider, may collect some device data to show and measure ads. You can change your choices at any time.</li>
+    </ul>
+  </div>
+
+  <section class="part">
+    <h4><span class="n">1</span>Who we are</h4>
+    <p>Gravity: Field Theory ("the game") is a physics puzzle and generative art game made by Ex Design ("we", "us"). This policy explains what information is handled when you play, and the choices you have.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">2</span>Ads in the game</h4>
+    <div class="chips">
+      <span class="chip"><i>✦</i>Interstitial: between levels in Solve</span>
+      <span class="chip"><i>▶</i>Rewarded: only if you choose it</span>
+      <span class="chip"><i>◎</i>No ads in Create</span>
+    </div>
+    <ul class="list">
+      <li><strong>Interstitial ads</strong> may appear in Solve when you tap "Next" after a level — never in the first levels and never more than every few levels.</li>
+      <li><strong>Rewarded ads</strong> are optional: you can choose to watch one to see a hint or to skip a level.</li>
+    </ul>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">3</span>Data collected for ads</h4>
+    <p>Ads are provided by the Google Mobile Ads SDK. To show, measure and limit ads and to prevent fraud, it may collect:</p>
+    <div class="table">
+      <table>
+        <thead><tr><th>Data</th><th>Examples</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Device identifiers</td><td>Advertising ID (Android), IDFA (iOS, only if you allow tracking)</td><td>Ads, frequency limits, measurement</td></tr>
+          <tr><td>Approximate location</td><td>Derived from IP address</td><td>Ads relevant to your region, legal requirements</td></tr>
+          <tr><td>Device &amp; app info</td><td>Model, OS version, language, app version</td><td>Showing ads correctly</td></tr>
+          <tr><td>Ad interactions</td><td>Ads shown, taps, videos completed</td><td>Measurement, rewards, fraud prevention</td></tr>
+          <tr><td>Diagnostics</td><td>Crash and performance data of the ad SDK</td><td>Keeping ads working</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>This data is processed by Google under its own policies: <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from apps that use its services</a>.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">4</span>What stays on your device</h4>
+    <p>The following is saved only on your device and is never sent to us:</p>
+    <ul class="list">
+      <li>Level progress (stars and skipped levels) and tutorial progress</li>
+      <li>Settings: music, sounds, vibration, nebula background, language</li>
+      <li>Artworks you save to the in-game gallery</li>
+      <li>Your ad consent choice (kept by Google's consent tool)</li>
+    </ul>
+    <p>Deleting the app removes all of this.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">5</span>Photos and sharing</h4>
+    <p>When you share an artwork, the game opens your device's standard share sheet with the image. If you choose to save it to your photo library, your device may ask for permission to <em>add</em> photos.</p>
+    <div class="note"><span class="dot"></span><span>The game never reads, accesses or uploads your photos, and nothing you share reaches us.</span></div>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">6</span>Your choices</h4>
+    <h5>EEA, UK and Switzerland</h5>
+    <p>You are asked for consent before personalized ads are shown. You can change your choice at any time in the game: <strong>Settings → Privacy choices</strong>.</p>
+    <h5>United States</h5>
+    <p>Where state law requires it, <strong>Settings → Privacy choices</strong> lets you opt out of the sale or sharing of your personal information for advertising.</p>
+    <h5>iOS</h5>
+    <p>You can decline tracking in Apple's App Tracking Transparency prompt, or later in <strong>Settings → Privacy &amp; Security → Tracking</strong>.</p>
+    <h5>Android</h5>
+    <p>You can reset or delete your advertising ID in your device settings (<strong>Google → Ads</strong>, or <strong>Privacy → Ads</strong>).</p>
+    <h5>Everywhere</h5>
+    <p>You can manage Google ad personalization at <a href="https://myadcenter.google.com/">My Ad Center</a>.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">7</span>Other services</h4>
+    <p>The game is built with the Unity engine (<a href="https://unity.com/legal/privacy-policy">Unity Privacy Policy</a>). The App Store and Google Play process data under their own policies when you download the game. There are no in-app purchases, no accounts and no social features.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">8</span>Children</h4>
+    <p>The game is intended for users aged 13 and older. We don't knowingly collect personal information from children. If you believe a child has provided personal information, please contact us.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">9</span>Your rights</h4>
+    <p>Depending on where you live (for example under the GDPR, UK GDPR, CCPA/CPRA or Turkey's KVKK), you may have rights to access, delete or object to the processing of your personal data. We don't hold personal data on our side, so requests about advertising data are best sent to Google — but you can always write to us and we will help.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">10</span>Changes to this policy</h4>
+    <p>We may update this policy. The latest version will always be on this page, with its effective date.</p>
+  </section>
+
+  <div class="contact">
+    <div>Questions about privacy?</div>
+    <a class="mail" href="mailto:exdesign.games@gmail.com">exdesign.games@gmail.com</a>
+  </div>
+</article>
+
+<!-- ======================================================= TÜRKÇE -->
+<article data-lang="tr" lang="tr">
+  <div class="title-row">
+    <h2 class="page">Gizlilik Politikası</h2>
+    <span class="date">Yürürlük: 1 Kasım 2026</span>
+  </div>
+
+  <div class="short">
+    <h3>Kısaca</h3>
+    <ul>
+      <li>Oyun ücretsizdir ve <strong>Google AdMob</strong> aracılığıyla reklam gösterir.</li>
+      <li><strong>Hesap yoktur.</strong> Kişisel verilerini toplamıyor, sunucularda saklamıyor ve satmıyoruz.</li>
+      <li>İlerlemen, ayarların ve eserlerin <strong>cihazında kalır</strong>.</li>
+      <li>Reklam sağlayıcımız Google, reklamları göstermek ve ölçmek için bazı cihaz verilerini toplayabilir. Tercihlerini dilediğin zaman değiştirebilirsin.</li>
+    </ul>
+  </div>
+
+  <section class="part">
+    <h4><span class="n">1</span>Biz kimiz</h4>
+    <p>Gravity: Field Theory ("oyun"), Ex Design ("biz") tarafından geliştirilen bir fizik bulmaca ve üretken sanat oyunudur. Bu politika, oyunu oynarken hangi bilgilerin işlendiğini ve sahip olduğun seçenekleri açıklar.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">2</span>Oyundaki reklamlar</h4>
+    <div class="chips">
+      <span class="chip"><i>✦</i>Geçiş reklamı: Çöz'de bölüm aralarında</span>
+      <span class="chip"><i>▶</i>Ödüllü: yalnızca sen seçersen</span>
+      <span class="chip"><i>◎</i>Oluştur'da reklam yok</span>
+    </div>
+    <ul class="list">
+      <li><strong>Geçiş reklamları</strong>, Çöz modunda bir bölümden sonra "İleri"ye dokunduğunda çıkabilir — ilk bölümlerde hiç çıkmaz ve birkaç bölümde birden sık çıkmaz.</li>
+      <li><strong>Ödüllü reklamlar</strong> isteğe bağlıdır: ipucu görmek ya da bir bölümü geçmek için izlemeyi seçebilirsin.</li>
+    </ul>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">3</span>Reklamlar için toplanan veriler</h4>
+    <p>Reklamlar Google Mobile Ads SDK'sı tarafından sağlanır. Reklamları göstermek, ölçmek, sınırlamak ve sahtekârlığı önlemek için şunları toplayabilir:</p>
+    <div class="table">
+      <table>
+        <thead><tr><th>Veri</th><th>Örnekler</th><th>Amaç</th></tr></thead>
+        <tbody>
+          <tr><td>Cihaz kimlikleri</td><td>Reklam kimliği (Android), IDFA (iOS, yalnızca takibe izin verirsen)</td><td>Reklam, gösterim sınırı, ölçüm</td></tr>
+          <tr><td>Yaklaşık konum</td><td>IP adresinden çıkarılır</td><td>Bölgene uygun reklam, yasal gereklilikler</td></tr>
+          <tr><td>Cihaz ve uygulama bilgisi</td><td>Model, işletim sistemi sürümü, dil, uygulama sürümü</td><td>Reklamların doğru gösterilmesi</td></tr>
+          <tr><td>Reklam etkileşimleri</td><td>Gösterilen reklamlar, dokunmalar, tamamlanan videolar</td><td>Ölçüm, ödüller, sahtekârlığı önleme</td></tr>
+          <tr><td>Tanılama</td><td>Reklam SDK'sının çökme ve performans verileri</td><td>Reklamların çalışır durumda kalması</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Bu veriler Google tarafından kendi politikalarına göre işlenir: <a href="https://policies.google.com/privacy">Google Gizlilik Politikası</a> ve <a href="https://policies.google.com/technologies/partner-sites">Google'ın, hizmetlerini kullanan uygulamalardan gelen bilgileri nasıl kullandığı</a>.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">4</span>Cihazında kalanlar</h4>
+    <p>Aşağıdakiler yalnızca cihazında saklanır ve bize hiçbir zaman gönderilmez:</p>
+    <ul class="list">
+      <li>Bölüm ilerlemesi (yıldızlar ve geçilen bölümler) ve eğitim ilerlemesi</li>
+      <li>Ayarlar: müzik, ses efektleri, titreşim, nebula arka planı, dil</li>
+      <li>Oyun içi galeriye kaydettiğin eserler</li>
+      <li>Reklam izni tercihin (Google'ın izin aracı tarafından saklanır)</li>
+    </ul>
+    <p>Uygulamayı silmek bunların hepsini siler.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">5</span>Fotoğraflar ve paylaşım</h4>
+    <p>Bir eseri paylaştığında oyun, cihazının standart paylaşım ekranını görselle birlikte açar. Görseli fotoğraf arşivine kaydetmeyi seçersen cihazın fotoğraf <em>ekleme</em> izni isteyebilir.</p>
+    <div class="note"><span class="dot"></span><span>Oyun fotoğraflarını hiçbir zaman okumaz, onlara erişmez veya yüklemez; paylaştığın hiçbir şey bize ulaşmaz.</span></div>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">6</span>Seçeneklerin</h4>
+    <h5>AEA, Birleşik Krallık ve İsviçre</h5>
+    <p>Kişiselleştirilmiş reklamlardan önce iznin istenir. Tercihini dilediğin zaman oyunda değiştirebilirsin: <strong>Ayarlar → Gizlilik tercihleri</strong>.</p>
+    <h5>Amerika Birleşik Devletleri</h5>
+    <p>Eyalet yasasının gerektirdiği yerlerde <strong>Ayarlar → Gizlilik tercihleri</strong>, kişisel bilgilerinin reklam amacıyla satılmasını veya paylaşılmasını reddetmeni sağlar.</p>
+    <h5>iOS</h5>
+    <p>Apple'ın Uygulama Takip Şeffaflığı penceresinde takibi reddedebilir ya da daha sonra <strong>Ayarlar → Gizlilik ve Güvenlik → Takip</strong> bölümünden değiştirebilirsin.</p>
+    <h5>Android</h5>
+    <p>Reklam kimliğini cihaz ayarlarından (<strong>Google → Reklamlar</strong> veya <strong>Gizlilik → Reklamlar</strong>) sıfırlayabilir ya da silebilirsin.</p>
+    <h5>Her yerde</h5>
+    <p>Google reklam kişiselleştirmesini <a href="https://myadcenter.google.com/">Reklam Merkezim</a> üzerinden yönetebilirsin.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">7</span>Diğer hizmetler</h4>
+    <p>Oyun Unity motoru ile geliştirilmiştir (<a href="https://unity.com/legal/privacy-policy">Unity Gizlilik Politikası</a>). App Store ve Google Play, oyunu indirdiğinde verileri kendi politikalarına göre işler. Oyunda uygulama içi satın alma, hesap veya sosyal özellik yoktur.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">8</span>Çocuklar</h4>
+    <p>Oyun 13 yaş ve üzeri kullanıcılar içindir. Çocuklardan bilerek kişisel bilgi toplamıyoruz. Bir çocuğun kişisel bilgi verdiğini düşünüyorsan lütfen bizimle iletişime geç.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">9</span>Hakların</h4>
+    <p>Yaşadığın yere bağlı olarak (örneğin GDPR, UK GDPR, CCPA/CPRA veya KVKK kapsamında) kişisel verilerine erişme, silinmesini isteme veya işlenmesine itiraz etme hakların olabilir. Bizim tarafımızda kişisel veri tutulmadığı için reklam verileriyle ilgili talepler en iyi Google'a iletilir — ama bize her zaman yazabilirsin, yardımcı oluruz.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">10</span>Bu politikadaki değişiklikler</h4>
+    <p>Bu politikayı güncelleyebiliriz. En güncel sürüm, yürürlük tarihiyle birlikte her zaman bu sayfada olacaktır.</p>
+  </section>
+
+  <div class="contact">
+    <div>Gizlilikle ilgili sorun mu var?</div>
+    <a class="mail" href="mailto:exdesign.games@gmail.com">exdesign.games@gmail.com</a>
+  </div>
+</article>
+
+</main>
+
+<footer>© 2026 Ex Design<span class="diamond">◆</span>Gravity: Field Theory</footer>
+
+<script>
+  function setLang(l) {
+    document.querySelectorAll('[data-lang]').forEach(function (s) { s.classList.toggle('on', s.getAttribute('data-lang') === l); });
+    document.getElementById('b-en').classList.toggle('on', l === 'en');
+    document.getElementById('b-tr').classList.toggle('on', l === 'tr');
+    document.documentElement.lang = l;
+    if (history.replaceState) history.replaceState(null, '', '#' + l);
+  }
+  var h = (location.hash || '').replace('#', '');
+  var q = new URLSearchParams(location.search).get('lang');
+  var pick = h === 'tr' || h === 'en' ? h : q === 'tr' || q === 'en' ? q
+           : ((navigator.language || '').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
+  setLang(pick);
+</script>
+</body>
+</html>
