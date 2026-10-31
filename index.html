@@ -4,54 +4,176 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ex Design – Games</title>
-<meta name="description" content="Ex Design – independent mobile games. Bouncing Ball: Moonlit Run.">
+<meta name="description" content="Ex Design – independent mobile games. Gravity: Field Theory and Bouncing Ball: Moonlit Run.">
+<meta name="theme-color" content="#0E0E12">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&family=Nunito:wght@400;600;700&family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@1,600&display=swap" rel="stylesheet">
 <style>
-  :root{ --bg:#10131f; --bg2:#181c2c; --card:#1b2033; --line:#2c3350; --text:#ece7dc; --muted:#a7abbd; --gold:#e6cf9c; --gold-deep:#c9a96a; --glow:rgba(255,206,128,.18); }
-  @media (prefers-color-scheme: light){
-    :root:not([data-theme="dark"]){ --bg:#f5f1ea; --bg2:#ece5d8; --card:#fffdf9; --line:#e2d8c6; --text:#2a2a2e; --muted:#6b6658; --gold:#8a6a2f; --gold-deep:#a5813f; --glow:rgba(201,169,106,.22); }
+  :root{
+    --bg:#0E0E12; --bg2:#15151C; --card:#17171F; --line:#26262F;
+    --text:#ECEAE6; --muted:#9C9AA6;
+    --teal:#7EC8CC; --rose:#D9908A;
   }
   *{box-sizing:border-box}
-  body{ margin:0; min-height:100vh; color:var(--text);
-    background:radial-gradient(1200px 600px at 50% -200px, var(--bg2), var(--bg) 70%) fixed, var(--bg);
-    font:16px/1.7 "Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
-  .wrap{ max-width:720px; margin:0 auto; padding:56px 18px 64px; text-align:center }
-  .studio{ font-family:"Cinzel",Georgia,serif; font-weight:700; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); font-size:.85rem; margin:0 0 36px }
-  .card{ background:var(--card); border:1px solid var(--line); border-radius:20px; padding:36px 22px 30px }
-  .moon{ width:96px; height:96px; margin:0 auto 22px; border-radius:50%;
+  html{scroll-behavior:smooth}
+  body{ margin:0; min-height:100vh; color:var(--text); background:var(--bg);
+    font:16px/1.7 "Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; }
+
+  /* ---------- Splash: the same logo and night background the games open with ---------- */
+  .splash{ position:relative; min-height:88vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:48px 18px; overflow:hidden; text-align:center; }
+  .splash::before{ content:""; position:absolute; inset:-20%;
+    background:
+      radial-gradient(38vmax 30vmax at 28% 30%, rgba(126,200,204,.13), transparent 62%),
+      radial-gradient(38vmax 30vmax at 74% 70%, rgba(217,144,138,.13), transparent 62%);
+    animation:drift 18s ease-in-out infinite alternate; }
+  @keyframes drift{ to{ transform:translate3d(2%, -2%, 0) rotate(4deg); } }
+
+  .logo{ position:relative; width:min(46vw,210px); aspect-ratio:1; opacity:0; transform:scale(.92);
+    animation:appear 1.4s cubic-bezier(.2,.7,.2,1) .2s forwards; }
+  .logo svg{ width:100%; height:100%; overflow:visible; }
+  .logo .frame{ fill:none; stroke:url(#edge); stroke-width:9; filter:drop-shadow(0 0 18px rgba(255,255,255,.08)); }
+  .logo .ex{ font:700 108px "Poppins",sans-serif; fill:#F3F3F5; letter-spacing:-2px; }
+  .word{ margin-top:20px; font:300 clamp(.95rem,3.4vw,1.2rem) "Poppins",sans-serif; letter-spacing:.9em; padding-left:.9em;
+    color:#E8E8EC; opacity:0; animation:appear 1.2s ease .9s forwards; }
+  .tag{ margin:26px 0 0; color:var(--muted); max-width:420px; opacity:0; animation:appear 1.2s ease 1.4s forwards; }
+  @keyframes appear{ to{ opacity:1; transform:none; } }
+
+  .down{ position:absolute; bottom:22px; left:50%; width:22px; height:36px; margin-left:-11px; border-radius:12px;
+    border:1.5px solid rgba(236,234,230,.35); opacity:0; animation:appear 1s ease 2s forwards; }
+  .down::after{ content:""; position:absolute; left:50%; top:7px; width:4px; height:8px; margin-left:-2px; border-radius:2px;
+    background:var(--text); animation:wheel 1.8s ease-in-out infinite; }
+  @keyframes wheel{ 0%{opacity:0; transform:translateY(0)} 30%{opacity:1} 100%{opacity:0; transform:translateY(12px)} }
+
+  /* ---------- Games ---------- */
+  .wrap{ max-width:760px; margin:0 auto; padding:8px 18px 64px; }
+  .section-title{ text-align:center; font:600 .8rem "Poppins",sans-serif; letter-spacing:.42em; text-transform:uppercase; color:var(--muted); margin:0 0 26px; }
+  .games{ display:grid; gap:22px; }
+
+  .game{ position:relative; border-radius:24px; overflow:hidden; padding:34px 24px 26px; text-align:center; isolation:isolate; }
+  .game .art{ width:112px; height:112px; margin:0 auto 20px; }
+  .game h2{ margin:0; line-height:1.15; }
+  .game .tagline{ margin:10px 0 0; font-weight:700; letter-spacing:.32em; font-size:.72rem; text-transform:uppercase; }
+  .game .desc{ max-width:480px; margin:18px auto 0; }
+  .game .soon{ display:inline-block; margin-top:22px; padding:8px 18px; border-radius:999px; font-weight:700; font-size:.9rem; }
+  .game .policy{ margin-top:20px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .game .policy a{ text-decoration:none; font-weight:700; font-size:.88rem; border-radius:999px; padding:7px 16px; }
+
+  /* Gravity: Field Theory — the game's own night: plum sky, amber light, violet and rose */
+  .gravity{ background:
+      radial-gradient(420px 240px at 85% 0%, rgba(232,106,154,.24), transparent 70%),
+      radial-gradient(380px 260px at 0% 100%, rgba(157,134,255,.20), transparent 70%),
+      linear-gradient(170deg, #241729, #140E1A);
+    border:1px solid rgba(255,179,138,.22); color:#F4ECE6; }
+  .gravity h2{ font:italic 600 clamp(2rem,7.5vw,2.7rem) "Cormorant Garamond",Georgia,serif; }
+  .gravity .tagline{ color:#FFB38A; }
+  .gravity .desc{ color:#C9BEC6; }
+  .gravity .soon{ border:1px solid rgba(255,179,138,.6); color:#FFB38A; }
+  .gravity .policy a{ color:#FFB38A; background:rgba(255,179,138,.08); border:1px solid rgba(255,179,138,.25); }
+  .gravity .policy a:hover{ border-color:#FFB38A; }
+  .orbit .t{ fill:none; stroke-width:2.4; stroke-linecap:round; }
+  .orbit .spark{ offset-path:path("M56 56 C 82 22, 104 39, 89 61 C 77 78, 63 68, 56 56 C 49 44, 35 34, 23 51 C 8 73, 30 90, 56 56"); animation:travel 8s linear infinite; }
+  @keyframes travel{ from{offset-distance:0%} to{offset-distance:100%} }
+
+  /* Bouncing Ball: Moonlit Run — kept as it was: midnight blue, moon and gold */
+  .moonlit{ background:
+      radial-gradient(520px 260px at 50% -40px, #1f2538, transparent 70%),
+      linear-gradient(170deg, #1b2033, #10131f);
+    border:1px solid #2c3350; color:#ece7dc; }
+  .moonlit .moon{ width:96px; height:96px; margin:8px auto 28px; border-radius:50%;
     background:radial-gradient(circle at 38% 35%, #fff6df, #f1d9a6 45%, #c9a96a 100%);
-    box-shadow:0 0 0 8px var(--glow), 0 0 64px 14px var(--glow); }
-  h1{ font-family:"Cinzel",Georgia,serif; font-size:clamp(1.6rem,6vw,2.3rem); line-height:1.2; margin:0 }
-  .tagline{ margin:10px 0 0; color:var(--gold); font-weight:700; letter-spacing:.32em; font-size:.72rem; text-transform:uppercase }
-  .desc{ color:var(--muted); max-width:480px; margin:20px auto 0 }
-  .soon{ display:inline-block; margin-top:22px; padding:8px 18px; border-radius:999px; border:1px solid var(--gold-deep); color:var(--gold); font-weight:700; font-size:.9rem }
-  .links{ margin-top:36px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
-  .links a{ text-decoration:none; color:var(--gold); font-weight:700; border:1px solid var(--line); border-radius:999px; padding:8px 18px; background:var(--card) }
-  .links a:hover{ border-color:var(--gold-deep) }
-  footer{ margin-top:40px; color:var(--muted); font-size:.85rem }
+    box-shadow:0 0 0 8px rgba(255,206,128,.18), 0 0 64px 14px rgba(255,206,128,.18); }
+  .moonlit h2{ font:700 clamp(1.5rem,5.6vw,2.1rem) "Cinzel",Georgia,serif; }
+  .moonlit .tagline{ color:#e6cf9c; }
+  .moonlit .desc{ color:#a7abbd; }
+  .moonlit .soon{ border:1px solid #c9a96a; color:#e6cf9c; }
+  .moonlit .policy a{ color:#e6cf9c; background:rgba(230,207,156,.06); border:1px solid #2c3350; }
+  .moonlit .policy a:hover{ border-color:#c9a96a; }
+
+  @media (prefers-reduced-motion: reduce){
+    .splash::before, .orbit .spark, .down::after{ animation:none; }
+    .logo, .word, .tag, .down{ animation-duration:.01s; animation-delay:0s; }
+  }
+
+  /* ---------- Contact & footer ---------- */
+  .contact{ margin-top:40px; text-align:center; }
+  .contact a{ display:inline-flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); font-weight:700;
+    padding:12px 22px; border-radius:999px; background:var(--card); position:relative; }
+  .contact a::before{ content:""; position:absolute; inset:0; border-radius:inherit; padding:1.5px;
+    background:linear-gradient(120deg, var(--teal), var(--rose));
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; }
+  footer{ margin-top:34px; text-align:center; color:var(--muted); font-size:.85rem; }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <p class="studio">Ex Design</p>
 
-  <div class="card">
-    <div class="moon" aria-hidden="true"></div>
-    <h1>Bouncing Ball: Moonlit Run</h1>
-    <p class="tagline">A journey by moonlight</p>
-    <p class="desc">Guide a moonlit ball past marble pillars on a night journey around the world's landmarks — from Istanbul to Paris, Rome and beyond.</p>
-    <span class="soon">Coming soon to Google Play &amp; the App Store</span>
+<header class="splash">
+  <div class="logo" role="img" aria-label="Ex Design">
+    <svg viewBox="0 0 220 220">
+      <defs>
+        <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#7EC8CC"/><stop offset=".5" stop-color="#A9A6AA"/><stop offset="1" stop-color="#D9908A"/>
+        </linearGradient>
+      </defs>
+      <rect class="frame" x="10" y="10" width="200" height="200" rx="52"/>
+      <text class="ex" x="110" y="148" text-anchor="middle">EX</text>
+    </svg>
+  </div>
+  <div class="word">DESIGN</div>
+  <p class="tag">Independent mobile games, made with care in small, quiet worlds.</p>
+  <a class="down" href="#games" aria-label="Our games"></a>
+</header>
+
+<main class="wrap" id="games">
+  <p class="section-title">Our games</p>
+
+  <div class="games">
+
+    <article class="game gravity">
+      <svg class="art orbit" viewBox="0 0 112 112" aria-hidden="true">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB38A"/><stop offset=".55" stop-color="#E86A9A"/><stop offset="1" stop-color="#9D86FF"/></linearGradient>
+          <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9D86FF"/><stop offset="1" stop-color="#FFB38A"/></linearGradient>
+          <radialGradient id="sun"><stop offset="0" stop-color="#FFF4EC"/><stop offset=".35" stop-color="#FFB38A"/><stop offset="1" stop-color="#FFB38A" stop-opacity="0"/></radialGradient>
+        </defs>
+        <path class="t" stroke="url(#g2)" opacity=".5" d="M56 56 C 86 25, 108 44, 91 65 C 79 80, 63 70, 56 56 C 49 42, 33 32, 21 49 C 6 72, 29 92, 56 56"/>
+        <path class="t" stroke="url(#g1)" d="M56 56 C 82 22, 104 39, 89 61 C 77 78, 63 68, 56 56 C 49 44, 35 34, 23 51 C 8 73, 30 90, 56 56"/>
+        <circle cx="85" cy="54" r="12" fill="url(#sun)"/>
+        <circle cx="29" cy="59" r="10" fill="url(#sun)" opacity=".8"/>
+        <circle class="spark" r="2.8" fill="#FFF4EC" style="filter:drop-shadow(0 0 4px #FFB38A)"/>
+      </svg>
+      <h2>Gravity: Field Theory</h2>
+      <p class="tagline">Where light bends to gravity</p>
+      <p class="desc">Place suns, repels and black holes to bend streams of light into the goal — fifty puzzles across five chapters. Then turn the same physics into glowing orbit art of your own.</p>
+      <span class="soon">Coming soon to Google Play &amp; the App Store</span>
+      <nav class="policy">
+        <a href="privacy/gravity/">Privacy Policy</a>
+        <a href="privacy/gravity/#tr">Gizlilik Politikası</a>
+      </nav>
+    </article>
+
+    <article class="game moonlit">
+      <div class="moon" aria-hidden="true"></div>
+      <h2>Bouncing Ball: Moonlit Run</h2>
+      <p class="tagline">A journey by moonlight</p>
+      <p class="desc">Guide a moonlit ball past marble pillars on a night journey around the world's landmarks — from Istanbul to Paris, Rome and beyond.</p>
+      <span class="soon">Coming soon to Google Play &amp; the App Store</span>
+      <nav class="policy">
+        <a href="privacy/">Privacy Policy</a>
+        <a href="privacy/#tr">Gizlilik Politikası</a>
+      </nav>
+    </article>
+
   </div>
 
-  <nav class="links">
-    <a href="privacy/">Privacy Policy</a>
-    <a href="privacy/#tr">Gizlilik Politikası</a>
-    <a href="mailto:exdesign.games@gmail.com">Contact</a>
-  </nav>
+  <div class="contact">
+    <a href="mailto:exdesign.games@gmail.com">✉ exdesign.games@gmail.com</a>
+  </div>
 
-  <footer>© 2026 Ex Design · exdesign.games@gmail.com</footer>
-</div>
+  <footer>© 2026 Ex Design</footer>
+</main>
+
 </body>
 </html>
