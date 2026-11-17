@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ex Design – Games</title>
-<meta name="description" content="Ex Design – independent mobile games. Gravity: Field Theory and Bouncing Ball: Moonlit Run.">
+<meta name="description" content="Ex Design – independent mobile games. Gravity: Field Theory and Bouncing Ball: Moonlit Run, now on Google Play.">
 <meta name="theme-color" content="#0E0E12">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,6 +92,18 @@
   .moonlit .policy a{ color:#e6cf9c; background:rgba(230,207,156,.06); border:1px solid #2c3350; }
   .moonlit .policy a:hover{ border-color:#c9a96a; }
 
+  /* Store buttons */
+  .stores{ margin-top:22px; display:flex; gap:8px; justify-content:center; align-items:stretch; flex-wrap:nowrap; }
+  .store-btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:9px 16px; border-radius:999px;
+    font-weight:700; font-size:clamp(.78rem,3.4vw,.9rem); white-space:nowrap; text-decoration:none; transition:filter .2s, box-shadow .2s; }
+  .store-btn svg{ width:17px; height:17px; flex:none; }
+  .store-btn small{ font-weight:600; opacity:.75; font-size:.85em; }
+  .moonlit .store-btn.soon-btn{ margin:0; background:transparent; color:#e6cf9c; border:1px solid #c9a96a; box-shadow:none; cursor:default; }
+  @media (max-width:360px){ .store-btn{ padding:8px 12px; gap:6px; } }
+  .moonlit .store-btn{ background:linear-gradient(180deg, #e6cf9c, #c9a96a); color:#14161f;
+    box-shadow:0 0 24px rgba(255,206,128,.22); }
+  .moonlit .store-btn:hover{ filter:brightness(1.07); box-shadow:0 0 32px rgba(255,206,128,.34); }
+
   @media (prefers-reduced-motion: reduce){
     .splash::before, .orbit .spark, .down::after{ animation:none; }
     .logo, .word, .tag, .down{ animation-duration:.01s; animation-delay:0s; }
@@ -159,10 +171,20 @@
       <h2>Bouncing Ball: Moonlit Run</h2>
       <p class="tagline">A journey by moonlight</p>
       <p class="desc">Guide a moonlit ball past marble pillars on a night journey around the world's landmarks — from Istanbul to Paris, Rome and beyond.</p>
-      <span class="soon">Coming soon to Google Play &amp; the App Store</span>
+      <div class="stores">
+        <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.exdesign.moonlitrun" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1Zm11.3 11.3 2.6 2.6-11.6 6.6 9-9.2Zm3.9-4.4 3 1.7c.8.5.8 1.7 0 2.2l-3 1.7-2.8-2.8 2.8-2.8ZM5.9 1.7l11.6 6.6-2.6 2.6-9-9.2Z"/></svg>
+          Google Play
+        </a>
+        <span class="store-btn soon-btn" aria-label="App Store, coming soon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1ZM13.9 4.9c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.1.1 2.3-.6 3-1.5Z"/></svg>
+          App Store <small>· Soon</small>
+        </span>
+      </div>
       <nav class="policy">
         <a href="privacy/moonlit-run/">Privacy Policy</a>
         <a href="privacy/moonlit-run/#tr">Gizlilik Politikası</a>
+        <a href="terms/moonlit-run/">Terms of Use</a>
       </nav>
     </article>
 
