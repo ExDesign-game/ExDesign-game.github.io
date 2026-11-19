@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service – Gravity: Field Theory</title>
+<meta name="description" content="Terms of service for Gravity: Field Theory, a physics puzzle and generative art game by Ex Design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void: #0D0A14;
+    --plum: #1E1424;
+    --plum-2: #2A1C31;
+    --line: rgba(244, 236, 230, 0.12);
+    --text: #F4ECE6;
+    --muted: #B3A6B0;
+    --amber: #FFB38A;
+    --rose: #E86A9A;
+    --violet: #9D86FF;
+    --goal: #8FE3C0;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--void);
+    color: var(--text);
+    font: 16px/1.7 "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- Sky ---------- */
+  .sky {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(60vmax 40vmax at 85% -5%, rgba(232, 106, 154, 0.22), transparent 60%),
+      radial-gradient(55vmax 45vmax at -10% 30%, rgba(157, 134, 255, 0.16), transparent 60%),
+      radial-gradient(50vmax 40vmax at 70% 110%, rgba(255, 179, 138, 0.12), transparent 60%),
+      var(--void);
+  }
+  .sky::after {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.7), transparent),
+      radial-gradient(1px 1px at 78% 12%, rgba(255,255,255,.55), transparent),
+      radial-gradient(1.5px 1.5px at 42% 66%, rgba(255,217,196,.6), transparent),
+      radial-gradient(1px 1px at 88% 52%, rgba(255,255,255,.5), transparent),
+      radial-gradient(1px 1px at 22% 84%, rgba(255,255,255,.45), transparent),
+      radial-gradient(1.5px 1.5px at 62% 30%, rgba(201,192,255,.55), transparent),
+      radial-gradient(1px 1px at 6% 52%, rgba(255,255,255,.4), transparent),
+      radial-gradient(1px 1px at 94% 88%, rgba(255,255,255,.45), transparent);
+  }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- Hero ---------- */
+  header { padding: 56px 0 28px; text-align: center; }
+  .orbit { width: 132px; height: 132px; margin: 0 auto 18px; display: block; }
+  .orbit .trail { fill: none; stroke-width: 2.2; stroke-linecap: round; }
+  .orbit .t1 { stroke: url(#g1); }
+  .orbit .t2 { stroke: url(#g2); opacity: .55; }
+  .orbit .spark { animation: travel 9s linear infinite; offset-path: path("M66 66 C 96 26, 122 46, 104 72 C 90 92, 74 80, 66 66 C 58 52, 42 40, 28 60 C 10 86, 36 106, 66 66"); }
+  @keyframes travel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+  @media (prefers-reduced-motion: reduce) { .orbit .spark { animation: none; } }
+  h1.game {
+    font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-weight: 600;
+    font-size: clamp(40px, 9vw, 58px); line-height: 1.02; margin: 0; letter-spacing: .2px;
+    text-shadow: 0 2px 24px rgba(13, 10, 20, .9);
+  }
+  .by { margin-top: 10px; color: var(--muted); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
+  .by b { color: var(--amber); font-weight: 500; }
+
+  .lang {
+    display: inline-flex; gap: 4px; margin-top: 26px; padding: 4px;
+    border-radius: 999px; background: rgba(30, 20, 36, .85); border: 1px solid var(--line);
+  }
+  .lang button {
+    font: 500 14px "DM Sans", sans-serif; color: var(--muted); background: none; border: 0;
+    padding: 8px 18px; border-radius: 999px; cursor: pointer; transition: background .2s, color .2s;
+  }
+  .lang button.on { background: var(--amber); color: #2A1A26; }
+
+  /* ---------- Content ---------- */
+  [data-lang] { display: none; }
+  [data-lang].on { display: block; animation: fade .35s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  .title-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 28px 0 14px; }
+  h2.page {
+    font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-weight: 600;
+    font-size: 34px; margin: 0;
+  }
+  .date { color: var(--muted); font-size: 14px; }
+
+  .short {
+    border-radius: 24px; padding: 22px 22px 8px; margin-bottom: 8px;
+    background: linear-gradient(160deg, rgba(42, 28, 49, .95), rgba(30, 20, 36, .9));
+    border: 1px solid rgba(255, 179, 138, .28);
+    box-shadow: 0 20px 60px -30px rgba(255, 179, 138, .35);
+  }
+  .short h3 { margin: 0 0 12px; color: var(--amber); font-size: 15px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .short ul { list-style: none; padding: 0; margin: 0; }
+  .short li { position: relative; padding-left: 26px; margin-bottom: 12px; }
+  .short li::before {
+    content: ""; position: absolute; left: 4px; top: .62em; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--amber); box-shadow: 0 0 10px rgba(255, 179, 138, .8);
+  }
+
+  section.part { padding: 26px 0 4px; border-bottom: 1px solid var(--line); }
+  section.part:last-of-type { border-bottom: 0; }
+  h4 {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 20px; font-weight: 700; margin: 0 0 10px;
+  }
+  h4 .n {
+    flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+    font-size: 14px; font-weight: 700; color: var(--amber);
+    border: 1.5px solid rgba(255, 179, 138, .55); background: rgba(255, 179, 138, .08);
+  }
+  h5 { font-size: 16px; margin: 18px 0 6px; color: var(--text); }
+  p { margin: 0 0 14px; }
+  ul.list { margin: 0 0 14px; padding-left: 20px; }
+  ul.list li { margin-bottom: 8px; }
+  ul.list li::marker { color: var(--amber); }
+  a { color: var(--amber); text-decoration-color: rgba(255, 179, 138, .4); text-underline-offset: 3px; }
+  a:hover { text-decoration-color: var(--amber); }
+  strong { color: #fff; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 16px; }
+  .chip {
+    font-size: 13px; padding: 6px 12px; border-radius: 999px;
+    background: rgba(244, 236, 230, .06); border: 1px solid var(--line); color: var(--text);
+  }
+  .chip i { font-style: normal; margin-right: 6px; }
+
+  .table { border-radius: 18px; overflow: hidden; border: 1px solid var(--line); margin: 6px 0 16px; background: rgba(30, 20, 36, .7); }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th { text-align: left; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--amber); background: rgba(255, 179, 138, .07); }
+  th, td { padding: 12px 14px; vertical-align: top; }
+  tr + tr td { border-top: 1px solid var(--line); }
+  td:first-child { font-weight: 700; white-space: nowrap; }
+  @media (max-width: 560px) {
+    table, thead, tbody, tr, th, td { display: block; }
+    thead { display: none; }
+    tr { padding: 12px 14px; }
+    tr + tr { border-top: 1px solid var(--line); }
+    td { padding: 2px 0; border: 0 !important; white-space: normal !important; }
+    td:first-child { color: var(--amber); }
+  }
+
+  .note {
+    display: flex; gap: 12px; padding: 14px 16px; border-radius: 16px; margin: 4px 0 16px;
+    background: rgba(143, 227, 192, .07); border: 1px solid rgba(143, 227, 192, .25);
+  }
+  .note .dot { flex: none; width: 10px; height: 10px; margin-top: .55em; border-radius: 50%; background: var(--goal); box-shadow: 0 0 10px var(--goal); }
+
+  .contact {
+    margin: 30px 0 10px; padding: 22px; border-radius: 24px; text-align: center;
+    background: linear-gradient(160deg, rgba(42, 28, 49, .95), rgba(30, 20, 36, .9)); border: 1px solid var(--line);
+  }
+  .contact .mail {
+    display: inline-block; margin-top: 8px; padding: 12px 22px; border-radius: 999px;
+    background: var(--amber); color: #2A1A26; font-weight: 700; text-decoration: none;
+  }
+
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 26px 0 48px; }
+  footer .diamond { color: var(--amber); margin: 0 8px; }
+</style>
+</head>
+<body>
+<div class="sky"></div>
+
+<header class="wrap">
+  <svg class="orbit" viewBox="0 0 132 132" aria-hidden="true">
+    <defs>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#FFB38A"/><stop offset=".55" stop-color="#E86A9A"/><stop offset="1" stop-color="#9D86FF"/>
+      </linearGradient>
+      <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#9D86FF"/><stop offset="1" stop-color="#FFB38A"/>
+      </linearGradient>
+      <radialGradient id="sun"><stop offset="0" stop-color="#FFF4EC"/><stop offset=".35" stop-color="#FFB38A"/><stop offset="1" stop-color="#FFB38A" stop-opacity="0"/></radialGradient>
+    </defs>
+    <path class="trail t2" d="M66 66 C 100 30, 126 52, 106 76 C 92 94, 74 82, 66 66 C 58 50, 40 38, 26 58 C 8 84, 34 108, 66 66"/>
+    <path class="trail t1" d="M66 66 C 96 26, 122 46, 104 72 C 90 92, 74 80, 66 66 C 58 52, 42 40, 28 60 C 10 86, 36 106, 66 66"/>
+    <circle cx="100" cy="64" r="14" fill="url(#sun)"/>
+    <circle cx="34" cy="70" r="12" fill="url(#sun)" opacity=".8"/>
+    <circle class="spark" r="3" fill="#FFF4EC" style="filter: drop-shadow(0 0 4px #FFB38A)"/>
+  </svg>
+  <h1 class="game">Gravity:<br>Field Theory</h1>
+  <div class="by" lang="en">by <b>Ex Design</b></div>
+  <div class="lang" role="tablist">
+    <button id="b-en" onclick="setLang('en')" role="tab">English</button>
+    <button id="b-tr" onclick="setLang('tr')" role="tab">Türkçe</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ENGLISH -->
+<article data-lang="en" lang="en">
+  <div class="title-row">
+    <h2 class="page">Terms of Service</h2>
+    <span class="date">Effective: November 20, 2026</span>
+  </div>
+
+  <div class="short">
+    <h3>In short</h3>
+    <ul>
+      <li>The game is <strong>free to play</strong> and supported by ads. There are no in-app purchases.</li>
+      <li>The artworks you make in the game are <strong>yours</strong> to keep and share.</li>
+      <li>Please don't copy, modify or resell the game itself.</li>
+      <li>Nothing here limits the consumer rights you have under the law of your country.</li>
+    </ul>
+  </div>
+
+  <section class="part">
+    <h4><span class="n">1</span>About these terms</h4>
+    <p>These terms apply to Gravity: Field Theory ("the game"), a physics puzzle and generative art game made by Ex Design ("we", "us"). By downloading or playing the game you agree to them. If you don't agree, please don't use the game.</p>
+    <p>The terms of the store you downloaded the game from (Google Play or the App Store) also apply. On iOS, Apple's <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Standard End User License Agreement</a> applies together with these terms.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">2</span>Your license to play</h4>
+    <p>We give you a personal, non-exclusive, non-transferable license to install and play the game on devices you own or control, for your own non-commercial entertainment.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">3</span>Free game and ads</h4>
+    <ul class="list">
+      <li>The game is free. It shows ads provided by Google AdMob, as described in our <a href="../../privacy/gravity/">Privacy Policy</a>.</li>
+      <li><strong>Rewarded ads</strong> are optional. Watching one unlocks a hint or lets you skip a level. These rewards exist only inside the game and have no monetary value.</li>
+      <li>We don't control the content of individual ads. If you see an ad that seems inappropriate, you can report it through the ad itself.</li>
+    </ul>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">4</span>Your artworks</h4>
+    <p>Images you create in Create mode or from your solutions belong to you. You may save, share and use them as you like, including on social media. We don't receive them and claim no rights over them.</p>
+    <div class="note"><span class="dot"></span><span>If you share your artworks publicly, a mention of "Gravity: Field Theory" is appreciated but never required.</span></div>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">5</span>Fair use</h4>
+    <p>When using the game, please don't:</p>
+    <ul class="list">
+      <li>copy, sell, rent or redistribute the game or its parts;</li>
+      <li>decompile, reverse engineer or modify the game, except where the law allows it;</li>
+      <li>interfere with the ads, fake ad interactions or try to get rewards without watching ads;</li>
+      <li>use the game in a way that breaks the law.</li>
+    </ul>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">6</span>Our content</h4>
+    <p>The game, including its code, levels, design, graphics, music and sounds, and the names "Gravity: Field Theory" and "Ex Design", belongs to us or our licensors. The game uses fonts licensed under the SIL Open Font License and is built with Unity.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">7</span>Updates and availability</h4>
+    <p>We may update the game to fix problems, add or change content, or meet store and legal requirements. Some updates may be needed to keep playing. Your progress is saved only on your device, so deleting the game or changing devices removes it. We may stop offering the game in the future.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">8</span>Warranty and liability</h4>
+    <p>We work hard to make the game fun and reliable, but we provide it "as is" and can't promise it will always be free of errors or available without interruption.</p>
+    <p>As far as the law allows, we are not liable for indirect or consequential losses arising from use of the game. This doesn't limit liability that can't be limited by law, such as for intent or gross negligence, and it doesn't affect your statutory rights as a consumer.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">9</span>Privacy</h4>
+    <p>How data is handled in the game is explained in our <a href="../../privacy/gravity/">Privacy Policy</a>.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">10</span>Applicable law</h4>
+    <p>These terms are governed by the laws of the Republic of Türkiye. If you are a consumer living in another country, you also keep the protection of the mandatory consumer laws of your country, and you may bring a claim in the courts where you live.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">11</span>Changes to these terms</h4>
+    <p>We may update these terms. The latest version will always be on this page with its effective date. If you keep playing after a change, the updated terms apply.</p>
+  </section>
+
+  <div class="contact">
+    <div>Questions or problems with the game?</div>
+    <a class="mail" href="mailto:exdesign.games@gmail.com">exdesign.games@gmail.com</a>
+  </div>
+</article>
+
+<!-- TÜRKÇE -->
+<article data-lang="tr" lang="tr">
+  <div class="title-row">
+    <h2 class="page">Hizmet Şartları</h2>
+    <span class="date">Yürürlük: 20 Kasım 2026</span>
+  </div>
+
+  <div class="short">
+    <h3>Kısaca</h3>
+    <ul>
+      <li>Oyun <strong>ücretsizdir</strong> ve reklamlarla desteklenir. Uygulama içi satın alma yoktur.</li>
+      <li>Oyunda yaptığın eserler <strong>senindir</strong>; saklayabilir ve paylaşabilirsin.</li>
+      <li>Lütfen oyunun kendisini kopyalama, değiştirme veya satma.</li>
+      <li>Buradaki hiçbir şey, ülkenin yasalarına göre sahip olduğun tüketici haklarını sınırlamaz.</li>
+    </ul>
+  </div>
+
+  <section class="part">
+    <h4><span class="n">1</span>Bu şartlar hakkında</h4>
+    <p>Bu şartlar, Ex Design ("biz") tarafından geliştirilen fizik bulmaca ve üretken sanat oyunu Gravity: Field Theory ("oyun") için geçerlidir. Oyunu indirerek veya oynayarak bu şartları kabul etmiş olursun. Kabul etmiyorsan lütfen oyunu kullanma.</p>
+    <p>Oyunu indirdiğin mağazanın (Google Play veya App Store) şartları da geçerlidir. iOS'ta Apple'ın <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Standart Son Kullanıcı Lisans Sözleşmesi</a> bu şartlarla birlikte uygulanır.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">2</span>Oynama lisansın</h4>
+    <p>Sana, oyunu sahip olduğun veya kontrol ettiğin cihazlara kurup kendi ticari olmayan eğlencen için oynaman amacıyla kişisel, münhasır olmayan ve devredilemeyen bir lisans veriyoruz.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">3</span>Ücretsiz oyun ve reklamlar</h4>
+    <ul class="list">
+      <li>Oyun ücretsizdir. <a href="../../privacy/gravity/#tr">Gizlilik Politikası</a>'nda anlatıldığı gibi Google AdMob tarafından sağlanan reklamlar gösterir.</li>
+      <li><strong>Ödüllü reklamlar</strong> isteğe bağlıdır. İzlediğinde bir ipucu açılır veya bir bölümü geçebilirsin. Bu ödüller yalnızca oyun içinde geçerlidir ve parasal değeri yoktur.</li>
+      <li>Tek tek reklamların içeriğini biz belirlemiyoruz. Uygunsuz bir reklam görürsen reklamın kendisi üzerinden bildirebilirsin.</li>
+    </ul>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">4</span>Eserlerin</h4>
+    <p>Oluştur modunda veya çözümlerinden ortaya çıkan görseller sana aittir. Sosyal medya dahil dilediğin gibi kaydedebilir, paylaşabilir ve kullanabilirsin. Bu görseller bize ulaşmaz ve üzerlerinde hiçbir hak iddia etmeyiz.</p>
+    <div class="note"><span class="dot"></span><span>Eserlerini herkese açık paylaşırken "Gravity: Field Theory"den bahsetmen bizi mutlu eder, ama hiçbir zaman zorunlu değildir.</span></div>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">5</span>Adil kullanım</h4>
+    <p>Oyunu kullanırken lütfen şunları yapma:</p>
+    <ul class="list">
+      <li>oyunu veya parçalarını kopyalamak, satmak, kiralamak ya da yeniden dağıtmak;</li>
+      <li>yasanın izin verdiği durumlar dışında oyunu kaynak koda çevirmek, tersine mühendislik yapmak veya değiştirmek;</li>
+      <li>reklamlara müdahale etmek, sahte reklam etkileşimi oluşturmak veya reklam izlemeden ödül almaya çalışmak;</li>
+      <li>oyunu yasalara aykırı bir şekilde kullanmak.</li>
+    </ul>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">6</span>İçeriklerimiz</h4>
+    <p>Kodu, bölümleri, tasarımı, grafikleri, müzikleri ve sesleriyle oyun ile "Gravity: Field Theory" ve "Ex Design" adları bize veya lisans verenlerimize aittir. Oyunda SIL Open Font License ile lisanslanan yazı tipleri kullanılmıştır ve oyun Unity ile geliştirilmiştir.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">7</span>Güncellemeler ve erişilebilirlik</h4>
+    <p>Sorunları gidermek, içerik eklemek veya değiştirmek ya da mağaza ve yasal gerekliliklere uymak için oyunu güncelleyebiliriz. Oynamaya devam etmek için bazı güncellemeler gerekli olabilir. İlerlemen yalnızca cihazında saklanır; oyunu silmek veya cihaz değiştirmek ilerlemeni siler. İleride oyunu sunmayı bırakabiliriz.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">8</span>Garanti ve sorumluluk</h4>
+    <p>Oyunun eğlenceli ve sorunsuz olması için çok çalışıyoruz, ancak oyunu "olduğu gibi" sunuyoruz ve her zaman hatasız ya da kesintisiz çalışacağını garanti edemeyiz.</p>
+    <p>Yasaların izin verdiği ölçüde, oyunun kullanımından doğan dolaylı zararlardan sorumlu değiliz. Bu, kast veya ağır ihmal gibi yasayla sınırlanamayan sorumlulukları sınırlamaz ve tüketici olarak yasal haklarını etkilemez.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">9</span>Gizlilik</h4>
+    <p>Oyunda verilerin nasıl işlendiği <a href="../../privacy/gravity/#tr">Gizlilik Politikası</a>'nda açıklanmıştır.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">10</span>Uygulanacak hukuk</h4>
+    <p>Bu şartlar Türkiye Cumhuriyeti yasalarına tabidir. Başka bir ülkede yaşayan bir tüketiciysen, kendi ülkendeki zorunlu tüketici koruma yasalarının sağladığı korumayı da korursun ve yaşadığın yerdeki mahkemelere başvurabilirsin.</p>
+  </section>
+
+  <section class="part">
+    <h4><span class="n">11</span>Bu şartlardaki değişiklikler</h4>
+    <p>Bu şartları güncelleyebiliriz. En güncel sürüm, yürürlük tarihiyle birlikte her zaman bu sayfada olacaktır. Bir değişiklikten sonra oynamaya devam edersen güncel şartlar geçerli olur.</p>
+  </section>
+
+  <div class="contact">
+    <div>Oyunla ilgili bir sorun mu yaşadın, ya da sormak istediğin bir şey mi var?</div>
+    <a class="mail" href="mailto:exdesign.games@gmail.com">exdesign.games@gmail.com</a>
+  </div>
+</article>
+
+</main>
+
+<footer>© 2026 Ex Design<span class="diamond">◆</span>Gravity: Field Theory</footer>
+
+<script>
+  function setLang(l) {
+    document.querySelectorAll('[data-lang]').forEach(function (s) { s.classList.toggle('on', s.getAttribute('data-lang') === l); });
+    document.getElementById('b-en').classList.toggle('on', l === 'en');
+    document.getElementById('b-tr').classList.toggle('on', l === 'tr');
+    document.documentElement.lang = l;
+    if (history.replaceState) history.replaceState(null, '', '#' + l);
+  }
+  var h = (location.hash || '').replace('#', '');
+  var q = new URLSearchParams(location.search).get('lang');
+  var pick = h === 'tr' || h === 'en' ? h : q === 'tr' || q === 'en' ? q
+           : ((navigator.language || '').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
+  setLang(pick);
+</script>
+</body>
+</html>
